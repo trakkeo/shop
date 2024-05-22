@@ -4,8 +4,9 @@
 
     <div class="bg-light p-5 mb-5 text-center">
         <div class="container">
-            <h1>Agence lorem ipsum</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut cumque dolore error expedita itaque iure iusto magni, molestiae numquam omnis provident quae repellat sint soluta tempora unde voluptate voluptatibus.</p>
+            <h1>Bienvenue sur InnovShop</h1>
+            <p>Bienvenue dans notre boutique spécialisée dans les produits high-tech de pointe. Nous proposons un vaste assortiment d'appareils électroniques innovants, allant des derniers smartphones et ordinateurs portables aux gadgets les plus tendances. Que vous soyez un passionné de technologie ou simplement à la recherche du dernier équipement, notre équipe d'experts sera ravie de vous guider et de vous conseiller pour trouver le produit parfait répondant à vos besoins et à votre budget.</p>
+
         </div>
     </div>
 
