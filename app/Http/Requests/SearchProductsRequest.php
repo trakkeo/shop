@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PropertyContactRequest extends FormRequest
+class SearchProductsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,10 @@ class PropertyContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname' => ['required', 'string', 'min:2'],
-            'lastname' => ['required', 'string', 'min:2'],
-            'phone' => ['required', 'string', 'min:10'],
-            'email' => ['required', 'email', 'min:4'],
-            'message' => ['required', 'string', 'min:4']
+            'price' => ['numeric', 'regex:/^\d+(\.\d{1,2})?$/', 'gte:0', 'nullable'],
+            'memory' => ['numeric', 'gte:0', 'nullable'],
+            'screen_size' => ['numeric', 'gte:0', 'nullable'],
+            'name' => ['string', 'nullable'],
         ];
     }
 }

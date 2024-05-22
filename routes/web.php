@@ -16,13 +16,13 @@ $idRegex = '[0-9]+';
 $slugRegex = '[0-9a-z\-]+';
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/biens', [\App\Http\Controllers\PropertyController::class, 'index'])->name('property.index');
-Route::get('/biens/{slug}-{property}', [\App\Http\Controllers\PropertyController::class, 'show'])->name('property.show')->where([
-    'property' => $idRegex,
+Route::get('/produits', [\App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
+Route::get('/produits/{slug}-{product}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product.show')->where([
+    'product' => $idRegex,
     'slug' => $slugRegex
 ]);
-Route::post('/biens/{property}/contact', [\App\Http\Controllers\PropertyController::class, 'contact'])->name('property.contact')->where([
-    'property' => $idRegex,
+Route::post('/produits/{product}/contact', [\App\Http\Controllers\ProductController::class, 'contact'])->name('product.contact')->where([
+    'product' => $idRegex,
 ]);
 
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])
@@ -36,7 +36,7 @@ Route::delete('/logout', [\App\Http\Controllers\AuthController::class, 'logout']
 Route::get('/images/{path}', [\App\Http\Controllers\ImageController::class, 'show'])->where('path', '.*');
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () use ($idRegex) {
-   Route::resource('property', \App\Http\Controllers\Admin\PropertyController::class)->except(['show']);
+   Route::resource('product', \App\Http\Controllers\Admin\ProductController::class)->except(['show']);
    Route::resource('option', \App\Http\Controllers\Admin\OptionController::class)->except(['show']);
    Route::delete('picture/{picture}', [\App\Http\Controllers\Admin\PictureController::class, 'destroy'])
        ->name('picture.destroy')

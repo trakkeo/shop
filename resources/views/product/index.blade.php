@@ -6,8 +6,8 @@
 
     <div class="bg-light p-5 mb-5 text-center">
         <form action="" method="get" class="container d-flex gap-2">
-            <input type="number" placeholder="Surface minimum" class="form-control" name="surface" value="{{ $input['surface'] ?? '' }}">
-            <input type="number" placeholder="Nombre de pièce min" class="form-control" name="rooms" value="{{ $input['rooms'] ?? '' }}">
+            <input type="number" placeholder="RAM Minimum" class="form-control" name="memory" value="{{ $input['memory'] ?? '' }}">
+            <input type="number" placeholder="Taille Ecran Min" class="form-control" name="screen_size" value="{{ $input['screen_size'] ?? '' }}">
             <input type="number" placeholder="Budget max" class="form-control" name="price" value="{{ $input['price'] ?? '' }}">
             <input placeholder="Mot clef" class="form-control" name="title" value="{{ $input['title'] ?? '' }}">
             <button class="btn btn-primary btn-sm flex-grow-0">
@@ -18,9 +18,9 @@
 
     <div class="container">
         <div class="row">
-            @forelse($properties as $property)
+            @forelse($products as $product)
                 <div class="col-3 mb-4">
-                    @include('property.card')
+                    @include('product.card')
                 </div>
             @empty
                 <div class="col">
@@ -30,7 +30,7 @@
         </div>
 
         <div class="my-4">
-            {{ $properties->links() }}
+            {{ $products->links() }}
         </div>
     </div>
 

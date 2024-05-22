@@ -10,11 +10,11 @@
     </div>
 
     <div class="container">
-        <h2>Nos derniers biens</h2>
+        <h2>Nos derniers produits</h2>
         <div class="row">
-            @foreach($properties as $property)
+            @foreach($products as $product)
             <div class="col">
-                @include('property.card')
+                @include('product.card')
             </div>
             @endforeach
         </div>

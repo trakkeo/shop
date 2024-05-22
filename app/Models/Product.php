@@ -9,22 +9,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
-class Property extends Model
+class Product extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'name',
         'description',
-        'surface',
-        'rooms',
-        'bedrooms',
-        'floor',
         'price',
-        'city',
-        'address',
-        'postal_code',
-        'sold',
+        'cpu',
+        'memory',
+        'screen_size',
+        'status',
+        'starred',
     ];
 
     public function options(): BelongsToMany
@@ -34,7 +31,7 @@ class Property extends Model
 
     public function getSlug(): string
     {
-        return Str::slug($this->title);
+        return Str::slug($this->name);
     }
 
     public function pictures(): HasMany
@@ -51,7 +48,7 @@ class Property extends Model
             if ($file->getError()) {
                 continue;
             }
-            $filename = $file->store('properties/' . $this->id, 'public');
+            $filename = $file->store('products/' . $this->id, 'public');
             $pictures[] = [
                 'filename' => $filename
             ];

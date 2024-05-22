@@ -13,7 +13,7 @@
 
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Agence</a>
+        <a class="navbar-brand" href="/">InnovShop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="{{ route('property.index') }}" @class(['nav-link', 'active' => str_contains($route, 'property.')])>Biens</a>
+                    <a href="{{ route('product.index') }}" @class(['nav-link', 'active' => str_contains($route, 'product.')])>Produits</a>
                 </li>
             </ul>
         </div>

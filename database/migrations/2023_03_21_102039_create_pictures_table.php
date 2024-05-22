@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pictures', function (Blueprint $table) {
             $table->id();
             $table->string('filename');
-            $table->foreignIdFor(\App\Models\Property::class)->constrained();
+            $table->foreignIdFor(\App\Models\Product::class)->constrained();
             $table->timestamps();
         });
     }
