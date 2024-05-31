@@ -25,6 +25,11 @@ Route::post('/produits/{product}/contact', [\App\Http\Controllers\ProductControl
     'product' => $idRegex,
 ]);
 
+Route::post('/cart/add/{productId}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [\App\Http\Controllers\CartController::class, 'showCart'])->name('cart.show');
+Route::post('/cart/remove/{itemId}', [\App\Http\Controllers\CartController::class, 'removeFromCart'])->name('cart.remove');
+
+
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])
     ->middleware('guest')
     ->name('login');

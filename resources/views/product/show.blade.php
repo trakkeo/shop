@@ -57,33 +57,35 @@
                     </table>
                 </div>
                 <h3>Options disponibles</h3>
-            <div class="row">
-                <div class="col-5">
-                    <h4>Couleurs</h4>
-                    <div class="form-group">
-                        @foreach($product->options->where('type', 'Couleur') as $option)
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="color" id="{{ $option->id }}" value="{{ $option->id }}">
-                            <label class="form-check-label" for="{{ $option->id }}">{{ $option->name }}</label>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
+                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+    @csrf
+    <div class="form-group">
+        <label for="quantity">Quantité :</label>
+        <input type="number" id="quantity" name="quantity" value="1" min="1" class="form-control" style="width: 100px;">
+    </div>
 
-                <div class="col-5">
-                    <h4>RAM</h4>
-                    <ul class="list-group">
-                        @foreach($product->options->where('type', 'RAM') as $option)
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ram" id="{{ $option->id }}" value="{{ $option->id }}">
-                            <label class="form-check-label" for="{{ $option->id }}">{{ $option->name }}</label>
-                        </div>
-                        @endforeach
-                    </ul>
-                </div>
+    <!-- Options pour la couleur -->
+    @foreach($product->options->where('type', 'Couleur') as $option)
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="color" id="color{{ $option->id }}" value="{{ $option->id }}">
+        <label class="form-check-label" for="color{{ $option->id }}">{{ $option->name }}</label>
+    </div>
+    @endforeach
+
+    <!-- Options pour la RAM -->
+    @foreach($product->options->where('type', 'RAM') as $option)
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="ram" id="ram{{ $option->id }}" value="{{ $option->id }}">
+        <label class="form-check-label" for="ram{{ $option->id }}">{{ $option->name }}</label>
+    </div>
+    @endforeach
+
+    <button type="submit" class="btn btn-primary mt-3">Ajouter au panier</button>
+</form>
 
 
             </div>
+            
 
     </div>
 
