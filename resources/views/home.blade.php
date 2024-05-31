@@ -1,6 +1,7 @@
 @extends('base')
-
+@section('title')Bienvenue sur la boutique @endsection
 @section('content')
+
 
     <div class="bg-light p-5 mb-5 text-center">
         <div class="container">
@@ -20,5 +21,6 @@
             @endforeach
         </div>
     </div>
+
 
 @endsection

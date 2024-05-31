@@ -18,11 +18,12 @@
                     </div>
 
                     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-prev-icon" aria-hidden="true" style="color: lightgrey;"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon" aria-hidden="true" style="color: lightgrey;"></span>
+
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
@@ -55,14 +56,35 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-12">
-                    <h2>Spécificités</h2>
+                <h3>Options disponibles</h3>
+            <div class="row">
+                <div class="col-5">
+                    <h4>Couleurs</h4>
+                    <div class="form-group">
+                        @foreach($product->options->where('type', 'Couleur') as $option)
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="{{ $option->id }}" value="{{ $option->id }}">
+                            <label class="form-check-label" for="{{ $option->id }}">{{ $option->name }}</label>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="col-5">
+                    <h4>RAM</h4>
                     <ul class="list-group">
-                        @foreach($product->options as $option)
-                            <li class="list-group-item">{{ $option->name }}</li>
+                        @foreach($product->options->where('type', 'RAM') as $option)
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ram" id="{{ $option->id }}" value="{{ $option->id }}">
+                            <label class="form-check-label" for="{{ $option->id }}">{{ $option->name }}</label>
+                        </div>
                         @endforeach
                     </ul>
                 </div>
+
+
+            </div>
+
     </div>
 
         <div class="mt-4">

@@ -7,7 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <title>@yield('title') | MonAgence</title>
+    <title>@yield('title') | InnovShop</title>
+    <style>
+      @layer reset {
+        button {
+          all: unset;
+        }
+      }
+      .htmx-indicator{
+        display:none;
+      }
+      .htmx-request .htmx-indicator{
+        display:inline-block;
+      }
+      .htmx-request.htmx-indicator{
+        display:inline-block;
+      }
+      .bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: black !important;
+}
+
+    </style>
 </head>
 <body>
 

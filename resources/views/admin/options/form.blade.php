@@ -12,6 +12,16 @@
         @method($option->exists ? 'put' : 'post')
 
         @include('shared.input', ['name' => 'name', 'label' => 'Nom', 'value' => $option->name])
+    <div>
+        <label for="type">Type</label>
+        <select name="type" id="type">
+            <option value="Couleur" {{ $option->type === 'Couleur' ? 'selected' : '' }}>Couleur</option>
+            <option value="RAM" {{ $option->type === 'RAM' ? 'selected' : '' }}>RAM</option>
+        </select>
+    </div>
+
+
+
 
         <div>
             <button class="btn btn-primary">

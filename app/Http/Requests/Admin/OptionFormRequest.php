@@ -23,6 +23,8 @@ class OptionFormRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:3'],
+            'type' => ['required', 'min:3', 'in:Couleur,RAM'],
+
         ];
     }
 }

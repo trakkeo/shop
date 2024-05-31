@@ -12,14 +12,18 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Nom</th>
+        <th>Type</th>    
+        <th>Valeur</th>
+            
             <th class="text-end">Actions</th>
         </tr>
         </thead>
         <tbody>
         @foreach($options as $option)
             <tr>
-                <td>{{ $option->name }}</td>
+            <td>{{ $option->type }}</td>    
+            <td>{{ $option->name }}</td>
+                
                 <td>
                     <div class="d-flex gap-2 w-100 justify-content-end">
                         <a href="{{ route('admin.option.edit', $option) }}" class="btn btn-primary">Editer</a>
