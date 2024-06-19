@@ -41,9 +41,9 @@
                     </button>
                 </div>
             </div>
-            <div class="col vstack gap-3" style="flex: 25">
+        <div class="col vstack gap-3" style="flex: 25; margin-top: 5px;">
                 @foreach($product->pictures as $picture)
-                    <div id="picture{{ $picture->id }}" class="position-relative">
+                    <div id="picture{{ $picture->id }}" class="position-relative" style="margin-top: 35px;">
                         <img src="{{ $picture->getImageUrl() }}" alt="" class="w-100 d-block">
                         <button type="button"
                                 class="btn btn-danger position-absolute bottom-0 w-100 start-0"

@@ -1,6 +1,13 @@
 @extends('base')
 @section('title')Bienvenue sur la boutique @endsection
 @section('content')
+@if (session('mustbeadmin'))
+    <div class="alert alert-danger">{{ session('mustbeadmin') }}</div>
+@endif
+@if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
 
 
     <div class="bg-light p-5 mb-5 text-center">
@@ -10,17 +17,28 @@
 
         </div>
     </div>
-
+    <div class="container" style="margin-bottom: 20px;">
+    <h2>Nos produits en vedette</h2>
+    <div class="row">
+        @foreach($starredProducts as $starredProduct)
+        <div class="col-4 mb-3">
+            @include('product.starredCard')
+        </div>
+        @endforeach
+    </div>
+</div>
     <div class="container">
         <h2>Nos derniers produits</h2>
         <div class="row">
             @foreach($products as $product)
-            <div class="col">
+            <div class="col-4 mb-3">
                 @include('product.card')
             </div>
             @endforeach
         </div>
     </div>
+
+
 
 
 @endsection

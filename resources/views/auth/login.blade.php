@@ -4,6 +4,11 @@
 
 @section('content')
 
+@if(session('mustbelogged'))
+    <div class="alert alert-danger">
+        Vous devez
+    </div>
+@endif
     <div class="mt-4 container">
         <h1>@yield('title')</h1>
 

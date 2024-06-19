@@ -51,6 +51,12 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.option.index') }}"  @class(['nav-link', 'active' => str_contains($route, 'option.')])>Gérer les options</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.orders.index') }}"  @class(['nav-link', 'active' => str_contains($route, 'order.')])>Gérer les commandes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('users.index') }}"  @class(['nav-link', 'active' => str_contains($route, 'user.')])>Gérer les utilisateurs</a>
+                </li>
             </ul>
             <div class="ms-auto">
                 @auth

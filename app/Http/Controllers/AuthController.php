@@ -20,7 +20,7 @@ class AuthController extends Controller
         $credentials = $request->validated();
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('admin.product.index'));
+            return to_route('login')->with('success', 'Vous êtes maintenant connecté');
         }
 
         return back()->withErrors([

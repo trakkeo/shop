@@ -8,27 +8,31 @@ use App\Models\Cart;
 use App\Models\CartItem;
 
 class CartController extends Controller
-{
+{        
     public function addToCart(Request $request, $productId)
     {
         $product = Product::findOrFail($productId);
         $cart = Cart::firstOrCreate(['user_id' => auth()->id()]);
+        $options = [
+            'color' => $request->color,
+            'ram' => $request->ram
+        ];
+    
         $cartItem = $cart->items()->where('product_id', $productId)->first();
-
+    
         if ($cartItem) {
             $cartItem->increment('quantity');
         } else {
             $cart->items()->create([
                 'product_id' => $productId,
-                'quantity' => 1, // ou $request->quantity si vous passez une quantité
-                'price' => $product->price
+                'quantity' => $request->quantity,
+                'price' => $product->price,
+                'options' => json_encode($options)
             ]);
         }
-
-        $cart->update(['total_price' => $cart->items->sum(function ($item) {
-            return $item->price * $item->quantity;
-        })]);
-
+    
+        $cart->update(['total_price' => $cart->items->sum('price')]);
+    
         return redirect()->route('cart.show');
     }
 

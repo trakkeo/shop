@@ -67,7 +67,7 @@
     <!-- Options pour la couleur -->
     @foreach($product->options->where('type', 'Couleur') as $option)
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="color" id="color{{ $option->id }}" value="{{ $option->id }}">
+        <input class="form-check-input" type="radio" name="color" id="color{{ $option->id }}" value="{{ $option->name }}">
         <label class="form-check-label" for="color{{ $option->id }}">{{ $option->name }}</label>
     </div>
     @endforeach
@@ -75,7 +75,7 @@
     <!-- Options pour la RAM -->
     @foreach($product->options->where('type', 'RAM') as $option)
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="ram" id="ram{{ $option->id }}" value="{{ $option->id }}">
+        <input class="form-check-input" type="radio" name="ram" id="ram{{ $option->id }}" value="{{ $option->name }}">
         <label class="form-check-label" for="ram{{ $option->id }}">{{ $option->name }}</label>
     </div>
     @endforeach
