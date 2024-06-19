@@ -4,19 +4,43 @@
 
 @section('content')
 <div class="container">
-    <h1>Commacccnde #{{ $order->id }}</h1>
+    <h1>Commande #{{ $order->id }}</h1>
     <p>Status: {{ $order->status }}</p>
     <p>Total: {{ $order->total_price }} €</p>
 
-    <h2>Coordonnées du client</h2>
-    <p>Nom : {{ $order->user->first_name }} {{ $order->user->last_name }}</p>
     <p>Email : {{ $order->user->email }}</p>
-    <p>Adresse : {{ $order->user->address1 }}</p>
-    @if($order->user->address2)
-        <p>Complément d'adresse : {{ $order->user->address2 }}</p>
-    @endif
-    <p>Code postal : {{ $order->user->postal_code }}</p>
-    <p>Ville : {{ $order->user->city }}</p>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <h2>Adresse de facturation</h2>
+            <p>Nom : {{ $order->user->first_name }} {{ $order->user->last_name }}</p>
+            <p>Adresse : {{ $order->user->address1 }}</p>
+            @if($order->user->address2)
+            <p>Complément d'adresse : {{ $order->user->address2 }}</p>
+            @endif
+            <p>Code postal : {{ $order->user->postal_code }}</p>
+            <p>Ville : {{ $order->user->city }}</p>
+        </div>
+        <div class="col-md-6">
+            <h2>Adresse de livraison</h2>
+            @php
+                $activeAddress = $order->user->addresses->where('is_active', true)->first();
+            @endphp
+            @if($activeAddress)
+                <p>Nom : {{ $order->user->first_name }} {{ $order->user->last_name }}</p>
+                <p>Adresse : {{ $activeAddress->address1 }}</p>
+                @if($activeAddress->address2)
+                <p>Complément d'adresse : {{ $activeAddress->address2 }}</p>
+                @endif
+                <p>Code postal : {{ $activeAddress->postal_code }}</p>
+                <p>Ville : {{ $activeAddress->city }}</p>
+                <p>Pays : {{ $activeAddress->country }}</p>
+            @else
+                <p>Identique à l'adresse de facturation</p>
+            @endif
+        </div>
+    </div>
 
     <h2>Articles</h2>
     <table class="table">
@@ -48,6 +72,8 @@
                     <td>{{ $item->price * $item->quantity }} €</td>             
                 </tr>
             @endforeach
+
+            
         </tbody>
     </table>
 
@@ -56,7 +82,6 @@
             @csrf
             <a href="{{ route('admin.orders.edit', $order) }}" class="btn btn-primary">Éditer</a>
         </form>
-        <a href="{{ route('users.edit', $order->user) }}" class="btn btn-primary mt-2">Modifier les coordonnées</a>
     </div>
 </div>
 @endsection

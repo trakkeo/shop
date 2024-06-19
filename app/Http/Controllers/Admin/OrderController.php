@@ -36,4 +36,6 @@ class OrderController extends Controller
 
         return redirect()->route('admin.orders.index')->with('success', 'Commande mise à jour avec succès.');
     }
+
+
 }

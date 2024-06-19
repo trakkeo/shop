@@ -9,6 +9,13 @@
         @csrf
         @method('PUT')
 
+        <h1>Commande #{{ $order->id }}</h1>
+    <p>Status: {{ $order->status }}</p>
+    <p>Total: {{ $order->total_price }} €</p>
+    <p>Nom : {{ $order->user->first_name }} {{ $order->user->last_name }}</p>
+    <p>Email : {{ $order->user->email }}</p>
+               
+
         <div class="mb-3">
             <label for="status" class="form-label">Statut</label>
             <select class="form-control" id="status" name="status">

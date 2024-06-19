@@ -54,5 +54,13 @@ class OrderController extends Controller
     {
         $order->update(['status' => 'confirmed']);
         return redirect()->route('orders.show', $order)->with('success', 'Commande confirmée avec succès.');
+        
     }
+    public function list()
+    {
+        $user = auth()->user();
+        $orders = $user->orders;
+        return view('orders.myorders', compact('orders'));
+    }
+    
 }

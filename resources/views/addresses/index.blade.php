@@ -9,6 +9,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Adresse préférée</th>
                 <th>Adresse 1</th>
                 <th>Adresse 2</th>
                 <th>Ville</th>
@@ -20,6 +21,8 @@
         <tbody>
             @foreach ($addresses as $address)
             <tr>
+                <td>{{ $address->is_active ? 'Oui' : 'Non' }}</td>
+
                 <td>{{ $address->address1 }}</td>
                 <td>{{ $address->address2 }}</td>
                 <td>{{ $address->city }}</td>

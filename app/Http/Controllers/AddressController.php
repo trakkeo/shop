@@ -46,7 +46,16 @@ class AddressController extends Controller
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
             'country' => 'required|string|max:255',
+            'is_active' => 'required|boolean',
         ]);
+            // Si l'adresse est définie comme active, désactiver les autres adresses de l'utilisateur
+    if ($request->is_active) {
+        Address::where('user_id', $address->user_id)
+            ->where('id', '!=', $address->id)
+            ->update(['is_active' => false]);
+    }
+
+        
 
         $address->update($request->all());
 

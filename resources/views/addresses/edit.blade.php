@@ -9,6 +9,14 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
+                    <label for="is_active" class="form-label">Adresse préférée</label>
+                    <select class="form-control" id="is_active" name="is_active" required>
+                        <option value="1" {{ $address->is_active ? 'selected' : '' }}>Oui</option>
+                        <option value="0" {{ !$address->is_active ? 'selected' : '' }}>Non</option>
+                    </select>
+                </div>
+                
+        <div class="mb-3">
             <label for="address1" class="form-label">Adresse 1</label>
             <input type="text" class="form-control" id="address1" name="address1" value="{{ $address->address1 }}" required>
         </div>

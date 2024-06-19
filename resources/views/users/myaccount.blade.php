@@ -66,6 +66,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        <a href="{{ route('addresses.index') }}" class="btn btn-secondary">Gérer mes adresses</a>
     </form>
 </div>
 @endsection

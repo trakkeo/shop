@@ -64,6 +64,10 @@
             <a href="{{ route('cart.show') }}" class="nav-link">Panier</a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('orders.myorders') }}" class="nav-link">Mes Commandes</a>
+          </li>
+
+          <li class="nav-item">
           <a href="{{ route('users.myaccount') }}" class="nav-link">Mon Compte</a>
           </li>
           @if(Auth::user()->role == 'admin')
