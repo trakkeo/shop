@@ -7,6 +7,9 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Mail\OrderSummaryMail;
+use App\Mail\AdminOrderNotificationMail;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -53,9 +56,17 @@ class OrderController extends Controller
     public function confirm(Order $order)
     {
         $order->update(['status' => 'confirmed']);
+    
+    // Envoyer un email au client
+    Mail::to($order->user->email)->send(new OrderSummaryMail($order));
+
+    // Envoyer un email à l'administrateur
+    Mail::to('adrienbillard@trakkeo.com')->send(new AdminOrderNotificationMail($order));
+    
         return redirect()->route('orders.show', $order)->with('success', 'Commande confirmée avec succès.');
-        
     }
+
+
     public function list()
     {
         $user = auth()->user();

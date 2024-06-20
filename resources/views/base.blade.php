@@ -45,7 +45,10 @@
 
   <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">InnovShop</a>
+    <a class="navbar-brand" href="/">
+            <img src="{{ asset('images/logo_innovshop_rect.jpg') }}" alt="Logo" style="height: 40px;">
+            
+        </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -66,7 +69,9 @@
           <li class="nav-item">
             <a href="{{ route('orders.myorders') }}" class="nav-link">Mes Commandes</a>
           </li>
-
+          <li class="nav-item">
+            <a href="{{ route('contact.show') }}" class="nav-link">Contact</a>
+          </li>
           <li class="nav-item">
           <a href="{{ route('users.myaccount') }}" class="nav-link">Mon Compte</a>
           </li>
